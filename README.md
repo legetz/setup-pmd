@@ -5,7 +5,9 @@
 
 ## Example usage
 
-Run PMD rules defined in `pmd-rules.xml`:
+- Run PMD rules defined in `pmd-rules.xml`
+  - Custom ruleset should be hosted at your project repository
+  - Check `pmd-rules-example.xml` if you are unfamiliar with [PMD custom ruleset definition](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html)
 
 ```yaml
 name: validate-apex-code
@@ -19,7 +21,7 @@ jobs:
       - run: pmd -language apex -dir . -rulesets ./pmd-rules.xml -f text
 ```
 
-Run PMD `design.xml` default rules:
+- Run PMD `design.xml` default rules:
 
 ```yaml
 name: validate-apex-code
