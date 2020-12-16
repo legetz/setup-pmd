@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sfdx-actions/setup-pmd.git"
+    "url": "git+https://github.com/legetz/setup-pmd.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sfdx-actions/setup-pmd/issues"
+    "url": "https://github.com/legetz/setup-pmd/issues"
   },
-  "homepage": "https://github.com/sfdx-actions/setup-pmd#readme",
+  "homepage": "https://github.com/legetz/setup-pmd#readme",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.6"
   }
 }
