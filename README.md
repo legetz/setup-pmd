@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check APEX
-        uses: legetz/setup-pmd@6.30.0
+        uses: legetz/setup-pmd@v6.30.0
       - run: pmd -language apex -dir . -rulesets ./pmd-rules.xml -f text
 ```
 
@@ -31,6 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check APEX
-        uses: legetz/setup-pmd@6.30.0
+        uses: legetz/setup-pmd@v6.30.0
       - run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
 ```
