@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check APEX
-        uses: sfdx-actions/setup-pmd@v1
+        uses: legetz/setup-pmd@6.30.0
       - run: pmd -language apex -dir . -rulesets ./pmd-rules.xml -f text
 ```
 
@@ -29,6 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check APEX
-        uses: sfdx-actions/setup-pmd@v1
+        uses: legetz/setup-pmd@6.30.0
       - run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
 ```
