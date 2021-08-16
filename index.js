@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const exec = require("child_process").exec;
 
-const PMD_VERSION = "6.30.0";
+const PMD_VERSION = "6.37.0";
 
 try {
 	installPMD();
@@ -25,7 +25,7 @@ function installPMD() {
 }
 
 function referencePMD() {
-	const mk = "sudo mkdir /snap/bin && sudo chmod -R 757 /snap/bin";
+	const mk = "sudo mkdir -p /snap/bin && sudo chmod -R 757 /snap/bin";
 	const cmd = `sudo echo '#! /bin/bash
 $HOME/pmd/bin/run.sh pmd "$@"' > /snap/bin/pmd`;
 	const cm = "chmod +x /snap/bin/pmd";
