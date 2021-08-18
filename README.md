@@ -1,7 +1,7 @@
 # PMD - Salesforce APEX code analyzer action
 
 - This action allows to use PMD Source Code Analyzer from GitHub Actions
-- Latest version uses PMD `6.30.0`
+- Latest version uses PMD `6.37.0`
 
 ## Example usage
 
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check APEX
-        uses: legetz/setup-pmd@v6.30
+        uses: legetz/setup-pmd@v6.37
       - run: pmd -language apex -dir . -rulesets ./pmd-rules.xml -f text
 ```
 
@@ -31,6 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check APEX
-        uses: legetz/setup-pmd@v6.30
+        uses: legetz/setup-pmd@v6.37
       - run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
 ```
