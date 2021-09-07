@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const exec = require("child_process").exec;
 
-const PMD_VERSION = "6.37.0";
+const PMD_VERSION = "6.38.0";
 
 try {
 	installPMD();
