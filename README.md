@@ -1,7 +1,8 @@
 # PMD - Salesforce APEX code analyzer action
 
-- This action allows to use PMD Source Code Analyzer from GitHub Actions
-- Latest version uses PMD `6.55.0`
+- This action allows to use [PMD Source Code Analyzer](https://pmd.github.io/) from GitHub Actions
+- You can easily validate whole Apex codebase every time when push happens against any/certain branches
+- Latest version uses PMD `7.0.0-rc3`
 
 ## Example usage
 
@@ -10,27 +11,59 @@
   - Check `pmd-rules-example.xml` if you are unfamiliar with [PMD custom ruleset definition](https://pmd.github.io/latest/pmd_userdocs_making_rulesets.html)
 
 ```yaml
-name: validate-apex-code
+name: scan-code
 on: [push]
 jobs:
-  check-apex:
+  apex:
     runs-on: ubuntu-latest
     steps:
-      - name: Check APEX
-        uses: legetz/setup-pmd@v6.55
-      - run: pmd --dir . --rulesets ./pmd-rules.xml -f text
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup PMD
+      uses: legetz/setup-pmd@7.0.0-rc3
+    - name: APEX full scan
+      run: pmd check --dir ./force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f text
 ```
 
-- Run PMD `design.xml` default rules:
+- Run only PMD `design.xml` default rules:
 
 ```yaml
-name: validate-apex-code
+name: scan-code
 on: [push]
 jobs:
-  check-apex:
+  apex:
     runs-on: ubuntu-latest
     steps:
-      - name: Check APEX
-        uses: legetz/setup-pmd@v6.55
-      - run: pmd --dir ./force-app/main/default/classes -R category/apex/design.xml -f text
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup PMD
+      uses: legetz/setup-pmd@7.0.0-rc3
+    - name: APEX full scan for design rules only
+      run: pmd check --dir ./force-app/main/default/classes -R category/apex/design.xml -f text
 ```
+
+- You might also use pull-request driven action by Mitchell Spano (https://github.com/mitchspano/sfdx-scan-pull-request) in order to validate only added/changed Apex classes:
+```yaml
+name: scan-delta-code
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+jobs:
+  apex:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: APEX delta scan
+      uses: mitchspano/sfdx-scan-pull-request@v0.1.15
+      with:
+        pmdconfig: pmd-rules.xml
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+``````

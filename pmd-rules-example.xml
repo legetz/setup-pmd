@@ -23,7 +23,9 @@
     </rule>
     <rule ref="category/apex/design.xml/ExcessiveParameterList">
         <properties>
-            <property name="minimum" value="7.0" />
+            <property name="minimum">
+                <value>7</value>
+            </property>
         </properties>
     </rule>
 </ruleset>
