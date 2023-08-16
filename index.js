@@ -10,7 +10,7 @@ try {
 }
 
 function installPMD() {
-	const download = `wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-bin-${PMD_VERSION}.zip -P /tmp`;
+	const download = `wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip -P /tmp`;
 	const unzip = `unzip /tmp/pmd-bin-${PMD_VERSION}.zip -d /tmp`;
 	const mk = "mkdir $HOME/pmd";
 	const mv = `mv /tmp/pmd-bin-${PMD_VERSION}/* $HOME/pmd`;
