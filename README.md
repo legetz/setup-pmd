@@ -2,7 +2,7 @@
 
 - This action allows to use [PMD Source Code Analyzer](https://pmd.github.io/) from GitHub Actions
 - You can easily validate whole Apex codebase every time when push happens against any/certain branches
-- Latest version uses PMD `7.0.0-rc3`
+- Latest version uses PMD `7.0.0-rc4`
 
 ## Example usage
 
@@ -22,7 +22,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Setup PMD
-      uses: legetz/setup-pmd@7.0.0-rc3
+      uses: legetz/setup-pmd@7.0.0-rc4
     - name: APEX full scan
       run: pmd check --dir ./force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f text
 ```
@@ -41,7 +41,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Setup PMD
-      uses: legetz/setup-pmd@7.0.0-rc3
+      uses: legetz/setup-pmd@7.0.0-rc4
     - name: APEX full scan for design rules only
       run: pmd check --dir ./force-app/main/default/classes -R category/apex/design.xml -f text
 ```
